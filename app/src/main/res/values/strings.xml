@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">park-in</string>
+    <string name="emptySlots">Empty slots:</string>
+    <string name="CheckForEmptySlots">Check for empty slots</string>
 </resources>

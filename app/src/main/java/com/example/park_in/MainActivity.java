@@ -15,22 +15,25 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             Log.d("SHLOMI", "onPostExecute: update empty slots");
             TextView mTextView = (TextView) findViewById(R.id.counter);
-            mTextView.setText("Empty slots: " + result);
+            mTextView.setText(getString(R.string.emptySlots) + result);
         }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView mTextView = (TextView) findViewById(R.id.counter);
-        mTextView.setText("Not initialize yet");
+        updateEmptySlots();
         Button button = (Button) findViewById(R.id.CheckForpark);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("SHLOMI", "+onClick");
-                new updateUi().execute();
+                updateEmptySlots();
             }
         });
+    }
+
+    void updateEmptySlots() {
+        new updateUi().execute();
     }
 
 
