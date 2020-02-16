@@ -12,10 +12,10 @@ class MainActivity : AppCompatActivity() {
     val logTag = "MainActivity"
 
     inner class updateUi : EmptySlotsTask() {
-        override fun onPostExecute(result: String) {
+        override fun onPostExecute(result: String?) {
             Log.d(logTag, "onPostExecute(updateUi): update empty slots")
 
-            val stringToUpdate = getString(R.string.emptySlots) + result
+            val stringToUpdate = getString(R.string.emptySlots) + result?:""
             counterTextBox.setText(stringToUpdate)
         }
     }
@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
             Log.d(logTag, "+onClick")
             updateEmptySlots()
         }
-
     }
 
     internal fun updateEmptySlots() {
