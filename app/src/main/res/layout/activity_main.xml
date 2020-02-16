@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/CheckForpark"
+        android:id="@+id/checkForpark"
         android:layout_width="131dp"
         android:layout_height="wrap_content"
         android:text="@string/CheckForEmptySlots"
@@ -17,15 +17,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/counter"
+        android:id="@+id/counterTextBox"
         android:layout_width="231dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:text="@string/emptySlots"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/CheckForpark"
+        app:layout_constraintBottom_toTopOf="@+id/checkForpark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
