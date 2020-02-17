@@ -14,22 +14,23 @@ import kotlin.math.roundToInt
  */
 abstract class EmptySlotsTask : AsyncTask<String, Void, String>() {
     open val logTag = "EmptySlotsTask"
+    private val apiUrl = "https://umodyceboa.execute-api.us-east-2.amazonaws.com/default/lambda_handler"
+
     public override fun doInBackground(vararg args: String): String? {
-        var parseString: String? = null
-        var outData : String? = null
-        try{
-            Log.d(logTag, "fetching data")
-            val stream = BufferedInputStream(URL("https://umodyceboa.execute-api.us-east-2.amazonaws.com/default/lambda_handler").openStream())
+        val parseString: String?
+        val emptySpots: String?
+        try {
+            Log.d(logTag, "Fetching data...")
+            val stream = BufferedInputStream(URL(apiUrl).openStream())
             parseString = stream.bufferedReader().use(BufferedReader::readText)
-            outData = JSONObject(parseString).getString("available_spaces")
-            Log.d(logTag, "got $outData empty spaces")
-        }
-        catch (e : Exception)
-        {
-            System.out.println(e);
+            emptySpots = JSONObject(parseString).getString("available_spaces")
+            Log.d(logTag, "Got data from the API")
+            Log.d(logTag, "There are $emptySpots empty spots")
+        } catch (e: Exception) {
+            println(e);
             return null
         }
 
-        return outData
+        return emptySpots
     }
 }

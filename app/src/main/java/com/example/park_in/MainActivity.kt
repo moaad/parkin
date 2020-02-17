@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -30,10 +28,10 @@ class MainActivity : AppCompatActivity() {
         override var logTag = "updateUi"
 
         override fun onPostExecute(result: String?) {
-            Log.d(logTag, "update empty slots")
+            Log.d(logTag, "Empty slots updated !!!")
 
-            val stringToUpdate = getString(R.string.emptySlots) + result?:""
-            counterTextBox.setText(stringToUpdate)
+            val stringToUpdate = getString(R.string.emptySlots) + (result ?: "")
+            counterTextBox.text = stringToUpdate
         }
     }
 }
