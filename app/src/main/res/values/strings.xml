@@ -2,6 +2,4 @@
     <string name="app_name">park-in</string>
     <string name="emptySlots">Empty slots:</string>
     <string name="CheckForEmptySlots">Check for empty slots</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
 </resources>

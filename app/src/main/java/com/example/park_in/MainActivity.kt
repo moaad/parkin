@@ -11,15 +11,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     val logTag = "MainActivity"
 
-    inner class updateUi : EmptySlotsTask() {
-        override fun onPostExecute(result: String?) {
-            Log.d(logTag, "onPostExecute(updateUi): update empty slots")
-
-            val stringToUpdate = getString(R.string.emptySlots) + result?:""
-            counterTextBox.setText(stringToUpdate)
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,9 +22,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    internal fun updateEmptySlots() {
+    private fun updateEmptySlots() {
         updateUi().execute()
     }
 
+    inner class updateUi : EmptySlotsTask() {
+        override var logTag = "updateUi"
 
+        override fun onPostExecute(result: String?) {
+            Log.d(logTag, "update empty slots")
+
+            val stringToUpdate = getString(R.string.emptySlots) + result?:""
+            counterTextBox.setText(stringToUpdate)
+        }
+    }
 }
