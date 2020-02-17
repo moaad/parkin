@@ -21,15 +21,15 @@ abstract class EmptySlotsTask : AsyncTask<String, Void, String>() {
             Log.d(logTag, "fetching data")
             val stream = BufferedInputStream(URL("https://umodyceboa.execute-api.us-east-2.amazonaws.com/default/lambda_handler").openStream())
             parseString = stream.bufferedReader().use(BufferedReader::readText)
+            outData = JSONObject(parseString).getString("available_spaces")
+            Log.d(logTag, "got $outData empty spaces")
         }
         catch (e : Exception)
         {
             System.out.println(e);
             return null
         }
-        outData = JSONObject(parseString).getString("available_spaces")
 
-        Log.d(logTag, "got $outData empty spaces")
         return outData
     }
 }
