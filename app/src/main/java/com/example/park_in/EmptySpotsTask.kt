@@ -10,7 +10,7 @@ import kotlin.math.roundToInt
 /**
  * function onPostExecute(result: String?) must be implemented in the new class
  *
- * In order to get data, run EmptySlotsTask().execute()
+ * In order to get data, run newImplementedClass().execute()
  */
 abstract class EmptySlotsTask : AsyncTask<String, Void, String>() {
     open val logTag = "EmptySlotsTask"
